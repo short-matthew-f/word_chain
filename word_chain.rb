@@ -76,5 +76,29 @@ class Node
 end
 
 class WordChainer
+  def initialize(start_word)
+    @start_word = start_word
+  end
 
+  def create_dictionary
+
+  end
+
+  def adjacent_words(word)
+
+  end
+
+  def are_adjacent?(word_1, word_2)
+    return false if word_1.length != word_2.length
+
+    (0...word_1.length).map do |i|
+      word_1[i] == word_2[i]
+    end.select do |t|
+      t == false
+    end.count == 1
+  end
+
+  def chain_to(end_word)
+
+  end
 end
