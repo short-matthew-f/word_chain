@@ -76,16 +76,19 @@ class Node
 end
 
 class WordChainer
+  attr_accessor :start_word, :working_words, :root
+
   def initialize(start_word)
     @start_word = start_word
+    @working_words = create_dictionary.select { |word| word.length == start_word.length }
   end
 
   def create_dictionary
-
+    File.readlines('dictionary.txt').map(&:chomp)
   end
 
-  def adjacent_words(word)
-
+  def adjacent_words(in_word, word_list)
+    word_list.select { |word| are_adjacent?(in_word, word) }
   end
 
   def are_adjacent?(word_1, word_2)
